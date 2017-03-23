@@ -4,6 +4,7 @@ You can install the latest beta with
 <pre>
 npm i react-native-networkrequest --save
 </pre>
+This component has the function of the request timeout, and support requests timeout callback, can avoid repeating same requests.
 </p>
 <h1>Preview</h1>
 
