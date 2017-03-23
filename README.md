@@ -29,7 +29,7 @@ fetch(){
       var url1 = 'http:/*****/tour/getTourList/userName/13269661186/model/1'
       var url = 'http://api.*****.com/media/getnewslist?pageindex=1&pagesize=20'
       var url2 = 'http://www.baidu.com'
-      ZCXNetworkRequest.Post(20000,url1, (res)=>{
+      networkRequest.Post(20000,url1, (res)=>{
         alert('请求成功')
         console.log(res);
         loading = false
@@ -39,7 +39,7 @@ fetch(){
       })
     }
 
-    // ZCXNetworkRequest.Get(20000,url,(res)=>{
+    // networkRequest.Get(20000,url,(res)=>{
     //   alert('请求成功')
     //   console.log(res);
     // },(a)=>{
