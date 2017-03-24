@@ -1,6 +1,6 @@
 {
   "name": "react-native-networkrequest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "0.0.1",
   "main": "index.js",
   "scripts": {
@@ -10,5 +10,13 @@
     "network"
   ],
   "author": "nextchampion",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NextChampion/react-native-networkrequest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NextChampion/react-native-networkrequest/issues"
+  },
+  "homepage": "https://github.com/NextChampion/react-native-networkrequest#readme"
 }
