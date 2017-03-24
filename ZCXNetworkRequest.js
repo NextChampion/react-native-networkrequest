@@ -18,10 +18,10 @@ function timeoutPromise(ms, promise, requestTimeout ) {
   })
 }
 
-export function Post(ms,url,callback,requestTimeout,mothed = 'POST',body = null) {
+export function Post(ms,url,body = null,callback,requestTimeout) {
 
   return timeoutPromise(ms,fetch(url, {
-    method: mothed,
+    method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
     },
