@@ -18,7 +18,7 @@ function timeoutPromise(ms, promise, requestTimeout ) {
   })
 }
 
-export function Post(ms,url,body = null,callback,requestTimeout) {
+export function post(ms,url,body = null,callback,requestTimeout) {
 
   return timeoutPromise(ms,fetch(url, {
     method: 'POST',
@@ -46,7 +46,7 @@ export function Post(ms,url,body = null,callback,requestTimeout) {
   })
 }
 
-export function Get(ms,url,callback, requestTimeout) {
+export function get(ms,url,callback, requestTimeout) {
   return timeoutPromise(ms,fetch(url),requestTimeout)
   .then((response) => {
     if (response.status == '200') {

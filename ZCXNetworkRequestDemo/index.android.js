@@ -49,21 +49,21 @@ export default class ZCXNetworkRequestDemo extends Component {
       var url1 = 'http://192.168.0.125:8080/paike_service/tour/getTourList/userName/13269661186/model/1'
       var url = 'http://api.ycapp.yiche.com/media/getnewslist?pageindex=1&pagesize=20'
       var url2 = 'http://www.baidu.com'
-      ZCXNetworkRequest.Post(20000,url1, (res)=>{
+      ZCXNetworkRequest.post(20000,url1,null, (res)=>{
         alert('请求成功')
         console.log(res);
         loading = false
-      },(a)=>{
-        alert(a)
+      },(timeOut)=>{
+        alert(timeOut)
         loading = false
       })
     }
 
-    // ZCXNetworkRequest.Get(20000,url,(res)=>{
+    // ZCXNetworkRequest.get(20000,url,(res)=>{
     //   alert('请求成功')
     //   console.log(res);
-    // },(a)=>{
-    //     alert(a)
+    // },(timeOut)=>{
+    //     alert(timeOut)
     // })
 }
 
