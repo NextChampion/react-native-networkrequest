@@ -66,3 +66,31 @@ export function get(ms,url,callback, requestTimeout) {
     // console.error(error);
   })
 }
+
+export function put(ms,url,body = null,callback,requestTimeout) {
+
+  return timeoutPromise(ms,fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    body:JSON.stringify(body)
+  }),requestTimeout)
+  .then((response) => {
+    if (response.status == '200') {
+      return response.json()
+    }else {
+      return response
+    }
+  })
+  .then((responseData) => {
+    if (responseData.status&&responseData.status!='200') {
+      alert(`网络错误,错误码:${responseData.status}`)
+      return
+    }
+    callback(responseData)
+  })
+  .catch((error) => {
+    // console.error(error);
+  })
+}
