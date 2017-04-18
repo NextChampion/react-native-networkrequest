@@ -18,7 +18,7 @@ function timeoutPromise(ms, promise, requestTimeout ) {
   })
 }
 
-export function post(ms,url,body = null,callback,requestTimeout) {
+export function post(ms,url,body = null,callback,requestTimeout,error) {
 
   return timeoutPromise(ms,fetch(url, {
     method: 'POST',
@@ -36,7 +36,7 @@ export function post(ms,url,body = null,callback,requestTimeout) {
   })
   .then((responseData) => {
     if (responseData.status&&responseData.status!='200') {
-      alert(`网络错误,错误码:${responseData.status}`)
+      error(responseData)
       return
     }
     callback(responseData)
@@ -46,7 +46,7 @@ export function post(ms,url,body = null,callback,requestTimeout) {
   })
 }
 
-export function get(ms,url,callback, requestTimeout) {
+export function get(ms,url,callback, requestTimeout,error) {
   return timeoutPromise(ms,fetch(url),requestTimeout)
   .then((response) => {
     if (response.status == '200') {
@@ -57,7 +57,7 @@ export function get(ms,url,callback, requestTimeout) {
   })
   .then((responseData) => {
     if (responseData.status&&responseData.status!='200') {
-      alert(`网络错误,错误码:${responseData.status}`)
+      error(responseData)
       return
     }
     callback(responseData)
@@ -67,7 +67,7 @@ export function get(ms,url,callback, requestTimeout) {
   })
 }
 
-export function put(ms,url,body = null,callback,requestTimeout) {
+export function put(ms,url,body = null,callback,requestTimeout,error) {
 
   return timeoutPromise(ms,fetch(url, {
     method: 'PUT',
@@ -85,7 +85,7 @@ export function put(ms,url,body = null,callback,requestTimeout) {
   })
   .then((responseData) => {
     if (responseData.status&&responseData.status!='200') {
-      alert(`网络错误,错误码:${responseData.status}`)
+      error(responseData)
       return
     }
     callback(responseData)

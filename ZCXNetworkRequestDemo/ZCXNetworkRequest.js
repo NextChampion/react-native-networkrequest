@@ -18,10 +18,10 @@ function timeoutPromise(ms, promise, requestTimeout ) {
   })
 }
 
-export function Post(ms,url,callback,requestTimeout,mothed = 'POST',body = null) {
+export function post(ms,url,body = null,callback,requestTimeout,error) {
 
   return timeoutPromise(ms,fetch(url, {
-    method: mothed,
+    method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
     },
@@ -36,7 +36,7 @@ export function Post(ms,url,callback,requestTimeout,mothed = 'POST',body = null)
   })
   .then((responseData) => {
     if (responseData.status&&responseData.status!='200') {
-      alert(`网络错误,错误码:${responseData.status}`)
+      error(responseData)
       return
     }
     callback(responseData)
@@ -46,7 +46,7 @@ export function Post(ms,url,callback,requestTimeout,mothed = 'POST',body = null)
   })
 }
 
-export function Get(ms,url,callback, requestTimeout) {
+export function get(ms,url,callback, requestTimeout,error) {
   return timeoutPromise(ms,fetch(url),requestTimeout)
   .then((response) => {
     if (response.status == '200') {
@@ -57,7 +57,35 @@ export function Get(ms,url,callback, requestTimeout) {
   })
   .then((responseData) => {
     if (responseData.status&&responseData.status!='200') {
-      alert(`网络错误,错误码:${responseData.status}`)
+      error(responseData)
+      return
+    }
+    callback(responseData)
+  })
+  .catch((error) => {
+    // console.error(error);
+  })
+}
+
+export function put(ms,url,body = null,callback,requestTimeout,error) {
+
+  return timeoutPromise(ms,fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    body:JSON.stringify(body)
+  }),requestTimeout)
+  .then((response) => {
+    if (response.status == '200') {
+      return response.json()
+    }else {
+      return response
+    }
+  })
+  .then((responseData) => {
+    if (responseData.status&&responseData.status!='200') {
+      error(responseData)
       return
     }
     callback(responseData)
